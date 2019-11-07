@@ -1,7 +1,7 @@
 <template>
   <div>
-    <loginpage></loginpage>
-    <mainpage></mainpage>
+    <loginpage :is-login="isLogin" @set-login="setLogin"></loginpage>
+    <!-- <mainpage></mainpage> -->
   </div>
 </template>
 
@@ -17,8 +17,13 @@ export default {
   },
   data: function(){
    return {
-     hello: ''
+     isLogin: false
    }
+  },
+  methods: {
+    setLogin() {
+      this.isLogin = true;
+    }
   }
 }
 </script>
