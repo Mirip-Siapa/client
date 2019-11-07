@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <login v-if="page === 'login'"></login>
-        <register v-else></register>
+        <login v-if="page === 'login'" :is-login="isLogin" @set-login="setLogin" @set-page="setPage"></login>
+        <register v-else :is-login="isLogin" @set-login="setLogin" @set-page="setPage"></register>
     </div>
 </template>
 
@@ -12,9 +12,19 @@
     export default {
         data() {
             return {
-                name: 'John Silver',
                 page: "login"
             }
+        },
+        methods: {
+            setLogin() {
+                this.$emit("set-login");
+            },
+            setPage(page) {
+                this.page = page;
+            }
+        },
+        props: {
+            isLogin: Boolean
         },
         components: {
             login,
@@ -22,3 +32,7 @@
         }
     }
 </script>
+
+<style scoped>
+    
+</style>
