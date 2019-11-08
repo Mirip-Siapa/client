@@ -1,6 +1,9 @@
 <template>
-    <div style="padding-top:120px">
+    <div style="padding-top:100px">
         <div class="card">
+            <div style="display: flex; justify-content: center">
+                <img src="../../images/mirip.png" alt="" style="width: 300px; margin: 0px auto">
+            </div>
             <form>
                 <b-field 
                     label="Email"
@@ -41,7 +44,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "../config/axios";
 import Swal from 'sweetalert2';
 
 export default {
@@ -61,7 +64,7 @@ export default {
         register() {
             axios({
                 method: "POST",
-                url: "http://localhost:3000/users/register",
+                url: "/users/register",
                 data: {
                     email: this.email,
                     username: this.username,
