@@ -3,28 +3,34 @@
   <div class="card">
     <div class="card-image">
       <figure class="image is-4by3">
-        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+        <img src="https://images.unsplash.com/photo-1573131382472-1317cb6c0610?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="Placeholder image">
       </figure>
     </div>
     <div class="card-content">
       <div class="media">
-        <div class="media-left">
-          <figure class="image is-48x48">
-            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-          </figure>
-        </div>
         <div class="media-content">
-          <p class="title is-4">John Smith</p>
           <p class="subtitle is-6">@johnsmith</p>
         </div>
       </div>
 
       <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-        <a href="#">#css</a> <a href="#">#responsive</a>
+        <div>Lookalike:</div>
+        <small>
+          Clara 100%
+        </small>
         <br>
-        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+        <div style="display: flex; justify-content: space-between; margin-top: 10px">
+          <time datetime="2016-1-1">11:09 PM</time>
+          <div style="display: flex">
+            <a class="twitter-share-button"
+              href="https://twitter.com/intent/tweet?text=Hello%20world" style="margin:5px">
+              Tweet
+            </a>
+            <div class="" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" style="margin: 5px">
+              <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Bagikan</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
