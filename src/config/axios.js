@@ -1,12 +1,10 @@
-const axios = require('axios')
+import axios from 'axios'
 
 const axiosServer = axios.create({
-    baseURL: `http://localhost:3000`,
+    baseURL: `http://35.198.202.197`,
     headers: {
       "access_token": localStorage.getItem('token')
     }
 })
 
-module.exports = {
-  axiosServer
-}
+export default axiosServer

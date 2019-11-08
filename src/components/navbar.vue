@@ -4,21 +4,21 @@
         <template slot="brand">
             <b-navbar-item tag="router-link" :to="{ path: '/' }">
                 <img
-                    src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
+                    src="../../images/mirip.png"
                     alt="Lightweight UI components for Vue.js based on Bulma"
                 >
             </b-navbar-item>
         </template>
         <template slot="start">
-            <b-navbar-item href="#">
+            <b-navbar-item href="#" @click.prevent="home">
                 Home
             </b-navbar-item>
         </template>
-
+        
         <template slot="end">
             <b-navbar-item tag="div">
                 <div class="buttons">
-                    <a class="button is-light">
+                    <a class="button is-light" @click.prevent="logoutUser()">
                         Log out
                     </a>
                 </div>
@@ -31,7 +31,15 @@
 <script>
 
 export default {
-  name:'navbar'
+  name:'navbar',
+  methods:{
+      logoutUser(){
+        this.$emit('logout')
+      },
+      home(){
+          this.$emit('home')
+      }
+  }
 }
 </script>
 

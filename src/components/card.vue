@@ -3,31 +3,35 @@
   <div class="card">
     <div class="card-image">
       <figure class="image is-4by3">
-        <img src="https://images.unsplash.com/photo-1573131382472-1317cb6c0610?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="Placeholder image">
+        <img :src="image.url">
       </figure>
     </div>
     <div class="card-content">
       <div class="media">
         <div class="media-content">
-          <p class="subtitle is-6">@johnsmith</p>
+          <div style="display: flex; justify-content: space-between">
+            <p class="subtitle is-6">{{ image.user_id.email }}</p>
+            <slot></slot>
+          </div>
         </div>
       </div>
-
       <div class="content">
         <div>Lookalike:</div>
         <small>
-          Clara 100%
+          {{ image.name }} {{ persen }}%
         </small>
         <br>
         <div style="display: flex; justify-content: space-between; margin-top: 10px">
-          <time datetime="2016-1-1">11:09 PM</time>
-          <div style="display: flex">
+          <time datetime="2016-1-1">{{ moment }}</time>
+          <div style="display: flex; align-items: center">
             <a class="twitter-share-button"
-              href="https://twitter.com/intent/tweet?text=Hello%20world" style="margin:5px">
-              Tweet
+              :href="`https://twitter.com/intent/tweet?text=${url}`" style="margin:5px">
+              <img src="../../icons/tw.png" style="width: 40px; height: 40px">
             </a>
             <div class="" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" style="margin: 5px">
-              <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Bagikan</a>
+              <a target="_blank" :href="`https://www.facebook.com/sharer/sharer.php?u=${url}&amp;src=sdkpreparse`" class="fb-xfbml-parse-ignore">
+                <img src="../../icons/fb.png" style="width: 30px; height: 30px">
+              </a>
             </div>
           </div>
         </div>
@@ -37,8 +41,48 @@
 </template>
 
 <script>
+import moment from 'moment'
+import axios from '../config/axios'
+import Swal from 'sweetalert2'
 export default {
-  name:'card'
+  name:'card',
+  computed: {
+    persen(){
+      if(this.image.value < 0.1){
+        return String(this.image.value * 1000).slice(0, 4)
+      }
+      else{
+        return String(this.image.value * 100).slice(0, 4)
+      }
+    },
+    moment(){
+      return moment(this.image.createdAt).fromNow()
+    },
+    url(){
+      return this.image.url.split(' ').join('%20')
+    }
+  },
+  created(){
+    console.log(this.image.url.split(' ').join('%20'))
+  },
+  methods: {
+    delete(id){
+      axios({
+        method: 'delete',
+        url: `/images/${id}`
+      })
+        .then(({ data })=>{
+          this.$emit('userFetch')
+        })
+        .catch(err=>{
+          Swal.fire({
+            icon: 'error',
+            title: 'error delete'
+          })
+        })
+    }
+  },
+  props:['image']
 }
 </script>
 

@@ -1,23 +1,9 @@
 <template>
   <div>
     <b-menu>
-      <b-menu-list label="Menu">
-        <b-menu-item
-          icon="settings"
-          :active="isActive"
-          :expanded="isActive"
-          @click="isActive = !isActive">
-          <template slot="label" slot-scope="props">
-            Featured
-            <b-icon
-              class="is-pulled-right"
-              :icon="props.expanded ? 'menu-down' : 'menu-up'">
-            </b-icon>
-          </template>
-          <b-menu-item label="Users"></b-menu-item>
-          <b-menu-item label="Payments"></b-menu-item>
-        </b-menu-item>
-      </b-menu-list>
+        <b-menu-list label="Menu">
+            <b-menu-item icon="account" label="User" @click.prevent="userFetch"></b-menu-item>
+        </b-menu-list>
     </b-menu>
   </div>
 </template>
@@ -28,7 +14,12 @@ export default {
     return {
       isActive: true
     }
-}
+  },
+  methods:{
+    userFetch(){
+      this.$emit('userFetch')
+    }
+  }
 }
 </script>
 
