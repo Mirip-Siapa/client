@@ -11,7 +11,11 @@
         <div class="media-content">
           <div style="display: flex; justify-content: space-between">
             <p class="subtitle is-6">{{ image.user_id.email }}</p>
-            <slot></slot>
+            <button class="button" @click.prevent="deleteUser(image._id)" v-if="user">
+              <span class="icon is-small">
+                <i class="fas fa-times"></i>
+              </span>
+            </button>
           </div>
         </div>
       </div>
@@ -66,7 +70,7 @@ export default {
     console.log(this.image.url.split(' ').join('%20'))
   },
   methods: {
-    delete(id){
+    deleteUser(id){
       axios({
         method: 'delete',
         url: `/images/${id}`
@@ -82,7 +86,7 @@ export default {
         })
     }
   },
-  props:['image']
+  props:['image', 'user']
 }
 </script>
 

@@ -29,8 +29,7 @@
         </div>
         <div class="column">
           <div style="display: flex; flex-wrap: wrap;">
-            <card v-for="(image, index) in images" :key="index" :image="image" @userFetch="userFetch">
-              <div v-html="button" @click.prevent="deleteUser(image._id)"></div>
+            <card v-for="(image, index) in images" :key="index" :image="image" @userFetch="userFetch" :user="user">
             </card>
           </div>
         </div>
@@ -144,8 +143,8 @@ export default {
         })
     },
     home(){
+      this.user = false
       this.fetchImage()
-      this.user = true
     },
     deleteUser(id){
       axios({
