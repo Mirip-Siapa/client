@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
     <div class="container">
         <login v-if="page === 'login'" :is-login="isLogin" @set-login="setLogin" @set-page="setPage"></login>
         <register v-else :is-login="isLogin" @set-login="setLogin" @set-page="setPage"></register>
@@ -36,17 +35,4 @@
 
 <style scoped>
     
-=======
-  
-</template>
-
-<script>
-export default {
-
-}
-</script>
-
-<style>
-
->>>>>>> layout
 </style>

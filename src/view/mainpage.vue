@@ -1,12 +1,7 @@
 <template>
   <div>
-<<<<<<< HEAD
-    <div class="container is-fluid">
-    <navbar></navbar>
-=======
     <navbar></navbar>
     <div class="container is-fluid">
->>>>>>> layout
       <div class="columns">
         <div class="column is-3" style="margin-bottom: 0px;">
           <div style="position: sticky; top: 20px;">
@@ -84,12 +79,8 @@ export default {
 }
 </script>
 
-<<<<<<< HEAD
 <style scoped>
   container{
     margin-top: 200px;
   }
-=======
-<style>
->>>>>>> layout
 </style>
